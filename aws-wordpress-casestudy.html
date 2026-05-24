@@ -1,0 +1,489 @@
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=DM+Mono:wght@400;500&display=swap');
+
+  .cs * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  .cs {
+    font-family: 'DM Sans', sans-serif;
+    background: #f8f9fb;
+    color: #1a202c;
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 0 0 60px;
+  }
+
+  /* HERO */
+  .cs-hero {
+    background: #0f172a;
+    color: #fff;
+    padding: 52px 44px 44px;
+    border-radius: 12px 12px 0 0;
+    position: relative;
+    overflow: hidden;
+  }
+  .cs-hero::after {
+    content: '';
+    position: absolute;
+    right: -40px; top: -40px;
+    width: 260px; height: 260px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(255,153,0,0.15) 0%, transparent 65%);
+    pointer-events: none;
+  }
+  .cs-badge {
+    display: inline-block;
+    background: rgba(255,153,0,0.15);
+    color: #ff9900;
+    border: 1px solid rgba(255,153,0,0.35);
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 4px 12px;
+    border-radius: 4px;
+    margin-bottom: 18px;
+  }
+  .cs-hero h1 {
+    font-size: clamp(24px, 4.5vw, 38px);
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 14px;
+    color: #f1f5f9;
+  }
+  .cs-hero h1 span { color: #ff9900; }
+  .cs-hero p {
+    font-size: 15px;
+    color: #94a3b8;
+    line-height: 1.7;
+    max-width: 540px;
+    margin-bottom: 28px;
+  }
+  .cs-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .cs-pill {
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,255,255,0.12);
+    color: #cbd5e1;
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    padding: 5px 14px;
+    border-radius: 20px;
+  }
+  .cs-pill b { color: #fff; }
+
+  /* SECTIONS */
+  .cs-section {
+    background: #fff;
+    border: 1px solid #e2e8f0;
+    border-top: none;
+    padding: 36px 44px;
+  }
+  .cs-section:last-child {
+    border-radius: 0 0 12px 12px;
+  }
+
+  .cs-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #ff9900;
+    margin-bottom: 6px;
+  }
+  .cs-section h2 {
+    font-size: 20px;
+    font-weight: 700;
+    color: #0f172a;
+    margin-bottom: 14px;
+  }
+  .cs-section p {
+    font-size: 15px;
+    color: #475569;
+    line-height: 1.75;
+    margin-bottom: 10px;
+  }
+
+  /* ARCH DIAGRAM (SVG-based, no emoji) */
+  .cs-diagram {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+    padding: 28px 20px;
+    margin: 24px 0 0;
+    overflow-x: auto;
+  }
+
+  /* CARDS GRID */
+  .cs-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+    gap: 14px;
+    margin-top: 22px;
+  }
+  .cs-card {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+    padding: 20px 18px;
+    border-top: 3px solid #ff9900;
+  }
+  .cs-card h3 {
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #0f172a;
+    margin-bottom: 8px;
+  }
+  .cs-card p {
+    font-size: 13px;
+    color: #64748b;
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  /* SECURITY LIST */
+  .cs-sec-list {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 12px;
+    margin-top: 20px;
+  }
+  .cs-sec-list li {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-left: 3px solid #0f172a;
+    border-radius: 8px;
+    padding: 14px 16px;
+    font-size: 13px;
+    color: #475569;
+    line-height: 1.6;
+  }
+  .cs-sec-list li b {
+    display: block;
+    color: #0f172a;
+    font-size: 13px;
+    margin-bottom: 3px;
+  }
+
+  /* TABLE */
+  .cs-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    font-size: 14px;
+  }
+  .cs-table thead th {
+    background: #f1f5f9;
+    color: #475569;
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    text-align: left;
+    padding: 11px 14px;
+    border-bottom: 1px solid #e2e8f0;
+  }
+  .cs-table tbody tr {
+    border-bottom: 1px solid #f1f5f9;
+  }
+  .cs-table tbody tr:hover { background: #fafbfc; }
+  .cs-table tbody td {
+    padding: 12px 14px;
+    color: #475569;
+    vertical-align: top;
+  }
+  .cs-table tbody td:first-child {
+    color: #0f172a;
+    font-weight: 600;
+  }
+  .ok  { color: #16a34a; font-weight: 600; }
+  .no  { color: #dc2626; font-weight: 600; }
+  .dev { color: #d97706; font-weight: 600; }
+
+  /* LIMITATIONS */
+  .cs-lim-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 12px;
+    margin-top: 20px;
+  }
+  .cs-lim {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+    padding: 16px;
+  }
+  .cs-lim-badge {
+    display: inline-block;
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 2px 8px;
+    border-radius: 3px;
+    margin-bottom: 10px;
+  }
+  .b-critical { background: #fee2e2; color: #dc2626; }
+  .b-high     { background: #fef3c7; color: #d97706; }
+  .b-medium   { background: #ede9fe; color: #7c3aed; }
+  .cs-lim h4  { font-size: 13px; color: #0f172a; font-weight: 700; margin-bottom: 6px; }
+  .cs-lim p   { font-size: 13px; color: #64748b; line-height: 1.6; margin: 0; }
+
+  /* TAGS */
+  .cs-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 20px;
+  }
+  .cs-tag {
+    background: #f1f5f9;
+    border: 1px solid #e2e8f0;
+    color: #334155;
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    padding: 5px 12px;
+    border-radius: 4px;
+  }
+
+  /* DIVIDER */
+  .cs-divider {
+    border: none;
+    border-top: 1px solid #e2e8f0;
+    margin: 0;
+  }
+
+  @media (max-width: 600px) {
+    .cs-hero, .cs-section { padding: 28px 20px; }
+  }
+</style>
+
+<div class="cs">
+
+  <!-- HERO -->
+  <div class="cs-hero">
+    <div class="cs-badge">AWS · Terraform · Case Study</div>
+    <h1>WordPress on AWS —<br><span>High-Availability Architecture</span></h1>
+    <p>A production-grade WordPress deployment built entirely with Terraform — dual VPC isolation, auto-scaling EC2, shared EFS storage, and Multi-AZ RDS. Deployed end-to-end with a single <code style="font-family:'DM Mono',monospace;font-size:13px;background:rgba(255,153,0,0.15);color:#ff9900;padding:2px 8px;border-radius:4px;">terraform apply</code>.</p>
+    <div class="cs-pills">
+      <span class="cs-pill"><b>Region:</b> us-west-2</span>
+      <span class="cs-pill"><b>Compute:</b> t4g.small Graviton2</span>
+      <span class="cs-pill"><b>Database:</b> RDS MySQL 8.0 Multi-AZ</span>
+      <span class="cs-pill"><b>IaC:</b> Terraform ≥ 1.7</span>
+    </div>
+  </div>
+
+  <!-- OVERVIEW -->
+  <div class="cs-section">
+    <div class="cs-label">01 — Overview</div>
+    <h2>What Was Built</h2>
+    <p>A fully automated, cloud-native WordPress stack split across <strong>two dedicated VPCs</strong> — one for the application tier, one for the database — connected via VPC Peering. Strong network isolation at the infrastructure level, not just at the firewall.</p>
+    <p>Everything from credentials to AMI selection is handled by Terraform at deploy time. No manual steps, no hard-coded passwords, no SSH keys.</p>
+
+    <!-- Architecture diagram -->
+    <div class="cs-diagram">
+      <svg viewBox="0 0 780 120" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:780px;display:block;margin:0 auto;font-family:'DM Sans',sans-serif;">
+        <!-- Boxes -->
+        <!-- Internet -->
+        <rect x="10" y="30" width="100" height="60" rx="8" fill="#f1f5f9" stroke="#cbd5e1" stroke-width="1.5"/>
+        <text x="60" y="54" text-anchor="middle" font-size="18">🌐</text>
+        <text x="60" y="74" text-anchor="middle" font-size="11" fill="#475569" font-weight="600">Internet</text>
+
+        <!-- Arrow -->
+        <line x1="110" y1="60" x2="145" y2="60" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#arr)"/>
+
+        <!-- ALB -->
+        <rect x="145" y="30" width="105" height="60" rx="8" fill="#fff7ed" stroke="#fed7aa" stroke-width="1.5"/>
+        <text x="197" y="54" text-anchor="middle" font-size="18">⚖️</text>
+        <text x="197" y="74" text-anchor="middle" font-size="11" fill="#9a3412" font-weight="600">ALB</text>
+
+        <line x1="250" y1="60" x2="285" y2="60" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#arr)"/>
+
+        <!-- EC2 ASG -->
+        <rect x="285" y="20" width="110" height="80" rx="8" fill="#f0fdf4" stroke="#bbf7d0" stroke-width="1.5"/>
+        <text x="340" y="50" text-anchor="middle" font-size="18">⚙️</text>
+        <text x="340" y="68" text-anchor="middle" font-size="11" fill="#166534" font-weight="600">EC2 ASG</text>
+        <text x="340" y="83" text-anchor="middle" font-size="10" fill="#4ade80">private subnets</text>
+
+        <!-- Arrow to EFS -->
+        <line x1="395" y1="55" x2="428" y2="45" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#arr)"/>
+        <!-- Arrow to RDS -->
+        <line x1="395" y1="68" x2="428" y2="80" stroke="#94a3b8" stroke-width="1.5" marker-end="url(#arr)"/>
+
+        <!-- EFS -->
+        <rect x="428" y="10" width="100" height="55" rx="8" fill="#eff6ff" stroke="#bfdbfe" stroke-width="1.5"/>
+        <text x="478" y="33" text-anchor="middle" font-size="18">📂</text>
+        <text x="478" y="53" text-anchor="middle" font-size="11" fill="#1e40af" font-weight="600">EFS</text>
+
+        <!-- RDS -->
+        <rect x="428" y="72" width="100" height="55" rx="8" fill="#fdf4ff" stroke="#e9d5ff" stroke-width="1.5"/>
+        <text x="478" y="95" text-anchor="middle" font-size="18">🗄️</text>
+        <text x="478" y="115" text-anchor="middle" font-size="11" fill="#6b21a8" font-weight="600">RDS Multi-AZ</text>
+
+        <!-- VPC labels -->
+        <rect x="270" y="5" width="140" height="115" rx="6" fill="none" stroke="#e2e8f0" stroke-width="1" stroke-dasharray="4,3"/>
+        <text x="278" y="16" font-size="9" fill="#94a3b8" font-family="'DM Mono',monospace">VPC1 — App</text>
+
+        <rect x="418" y="5" width="120" height="124" rx="6" fill="none" stroke="#e2e8f0" stroke-width="1" stroke-dasharray="4,3"/>
+        <text x="426" y="16" font-size="9" fill="#94a3b8" font-family="'DM Mono',monospace">VPC1 / VPC2</text>
+
+        <!-- Secrets Manager -->
+        <rect x="570" y="30" width="115" height="60" rx="8" fill="#fff7ed" stroke="#fed7aa" stroke-width="1.5"/>
+        <text x="627" y="54" text-anchor="middle" font-size="18">🔐</text>
+        <text x="627" y="72" text-anchor="middle" font-size="11" fill="#9a3412" font-weight="600">Secrets Mgr</text>
+
+        <line x1="528" y1="60" x2="568" y2="60" stroke="#94a3b8" stroke-width="1" stroke-dasharray="4,3" marker-end="url(#arr2)"/>
+
+        <!-- Arrowhead marker -->
+        <defs>
+          <marker id="arr" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+            <path d="M0,0 L0,6 L8,3 z" fill="#94a3b8"/>
+          </marker>
+          <marker id="arr2" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+            <path d="M0,0 L0,6 L8,3 z" fill="#94a3b8"/>
+          </marker>
+        </defs>
+      </svg>
+    </div>
+  </div>
+
+  <hr class="cs-divider"/>
+
+  <!-- ARCHITECTURE -->
+  <div class="cs-section">
+    <div class="cs-label">02 — Components</div>
+    <h2>What Each Layer Does</h2>
+    <div class="cs-grid">
+      <div class="cs-card">
+        <h3>ALB</h3>
+        <p>Internet-facing, across two AZs. Cookie-based stickiness for WordPress admin sessions. Health checks via <code>/health</code>.</p>
+      </div>
+      <div class="cs-card">
+        <h3>EC2 ASG</h3>
+        <p>t4g.small Graviton2 in private subnets. Min 1, desired 2, max 4. Nginx + PHP-FPM 8.1. No public IPs.</p>
+      </div>
+      <div class="cs-card">
+        <h3>EFS</h3>
+        <p>Shared <code>/var/www/html</code> mounted across all instances. Encrypted, IAM-authenticated, TLS in transit.</p>
+      </div>
+      <div class="cs-card">
+        <h3>RDS MySQL</h3>
+        <p>MySQL 8.0, Multi-AZ, in isolated VPC2. Reachable only from EC2 via VPC Peering on port 3306.</p>
+      </div>
+    </div>
+  </div>
+
+  <hr class="cs-divider"/>
+
+  <!-- SECURITY -->
+  <div class="cs-section">
+    <div class="cs-label">03 — Security</div>
+    <h2>Defence-in-Depth</h2>
+    <p>Security is layered from the network edge down to IAM — each layer independently restrictive so a misconfiguration at one layer doesn't expose everything below it.</p>
+    <ul class="cs-sec-list">
+      <li><b>No SSH. No Bastion.</b>All access via SSM Session Manager. Zero open port 22 anywhere.</li>
+      <li><b>IMDSv2 Enforced</b>http_tokens = required, hop limit 1. Blocks SSRF attacks from instance metadata.</li>
+      <li><b>Least-Privilege IAM</b>EC2 role scoped to a single Secret ARN and specific EFS filesystem ID only.</li>
+      <li><b>Zero Hard-Coded Credentials</b>DB credentials auto-generated at deploy, stored only in Secrets Manager.</li>
+      <li><b>All Storage Encrypted</b>EBS, EFS, and RDS — AES-256. No exceptions.</li>
+      <li><b>Network ACLs</b>Three NACLs (public, private app, private data) on top of security groups.</li>
+      <li><b>SG-to-SG Rules</b>ALB → EC2 and EC2 → EFS use security group references, not CIDRs.</li>
+      <li><b>Nginx Path Blocking</b>Requests to .env, .git, .htaccess return 403 by default.</li>
+    </ul>
+  </div>
+
+  <hr class="cs-divider"/>
+
+  <!-- FEATURE TABLE -->
+  <div class="cs-section">
+    <div class="cs-label">04 — Feature Matrix</div>
+    <h2>What's Enabled vs. What's Not</h2>
+    <p>Built as a dev/assessment environment — some production features intentionally left out and documented as known gaps.</p>
+    <table class="cs-table">
+      <thead>
+        <tr>
+          <th>Feature</th>
+          <th>Status</th>
+          <th>Note</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Multi-AZ EC2 Auto Scaling</td><td class="ok">✓ Enabled</td><td>Spread across AZ-A and AZ-B</td></tr>
+        <tr><td>RDS MySQL Multi-AZ</td><td class="ok">✓ Enabled</td><td>Synchronous standby, auto failover &lt;60s</td></tr>
+        <tr><td>Shared EFS Web Root</td><td class="ok">✓ Enabled</td><td>All instances share /var/www/html</td></tr>
+        <tr><td>CPU-based Auto Scaling</td><td class="ok">✓ Enabled</td><td>Scale out >80%, scale in &lt;30%</td></tr>
+        <tr><td>Secrets Manager Credentials</td><td class="ok">✓ Enabled</td><td>Auto-generated, fetched at boot via IAM</td></tr>
+        <tr><td>Graviton2 ARM64 Compute</td><td class="ok">✓ Enabled</td><td>~20–40% cheaper than equivalent x86</td></tr>
+        <tr><td>EFS Intelligent Tiering</td><td class="ok">✓ Enabled</td><td>Cold files move to EFS-IA after 30 days</td></tr>
+        <tr><td>HTTPS / TLS</td><td class="no">✗ Not added</td><td>Needs ACM cert + port 443 listener</td></tr>
+        <tr><td>AWS WAF</td><td class="no">✗ Not added</td><td>No rule set attached to ALB</td></tr>
+        <tr><td>RDS Automated Backups</td><td class="dev">⚠ Dev only</td><td>Disabled; set retention ≥7 for prod</td></tr>
+        <tr><td>Terraform Remote State</td><td class="dev">⚠ Dev only</td><td>Local .tfstate — use S3 + DynamoDB for teams</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <hr class="cs-divider"/>
+
+  <!-- LIMITATIONS -->
+  <div class="cs-section">
+    <div class="cs-label">05 — Known Limitations</div>
+    <h2>Honest About the Gaps</h2>
+    <p>Trade-offs documented during the assessment — not discovered after.</p>
+    <div class="cs-lim-grid">
+      <div class="cs-lim">
+        <span class="cs-lim-badge b-critical">Critical</span>
+        <h4>No HTTPS</h4>
+        <p>All traffic over HTTP. Needs ACM certificate, port 443 listener, and HTTP→HTTPS redirect on the ALB.</p>
+      </div>
+      <div class="cs-lim">
+        <span class="cs-lim-badge b-high">High</span>
+        <h4>Single NAT Gateway</h4>
+        <p>NAT in AZ-A only. AZ-A outage breaks outbound internet for AZ-B instances — SSM and Secrets Manager fail.</p>
+      </div>
+      <div class="cs-lim">
+        <span class="cs-lim-badge b-high">High</span>
+        <h4>No RDS Backups</h4>
+        <p>retention = 0, no final snapshot. Fine for dev — unacceptable for production data.</p>
+      </div>
+      <div class="cs-lim">
+        <span class="cs-lim-badge b-medium">Medium</span>
+        <h4>No WAF / CloudFront</h4>
+        <p>No SQLi, XSS, or DDoS protection at the edge. Static assets served directly from EC2 via ALB.</p>
+      </div>
+    </div>
+  </div>
+
+  <hr class="cs-divider"/>
+
+  <!-- TECH STACK -->
+  <div class="cs-section">
+    <div class="cs-label">06 — Tech Stack</div>
+    <h2>Tools &amp; Services</h2>
+    <p>Everything provisioned via Terraform — no manual console steps.</p>
+    <div class="cs-tags">
+      <span class="cs-tag">Terraform ≥ 1.7</span>
+      <span class="cs-tag">AWS VPC Peering</span>
+      <span class="cs-tag">Application Load Balancer</span>
+      <span class="cs-tag">EC2 Auto Scaling</span>
+      <span class="cs-tag">Amazon EFS</span>
+      <span class="cs-tag">RDS MySQL 8.0</span>
+      <span class="cs-tag">Secrets Manager</span>
+      <span class="cs-tag">IAM Roles</span>
+      <span class="cs-tag">SSM Session Manager</span>
+      <span class="cs-tag">CloudWatch Alarms</span>
+      <span class="cs-tag">Amazon Linux 2 ARM64</span>
+      <span class="cs-tag">Nginx 1.x</span>
+      <span class="cs-tag">PHP-FPM 8.1</span>
+      <span class="cs-tag">Network ACLs</span>
+      <span class="cs-tag">Graviton2 t4g</span>
+    </div>
+  </div>
+
+</div>
