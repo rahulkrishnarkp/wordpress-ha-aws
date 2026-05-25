@@ -15,7 +15,7 @@
 #   8.  Starts Nginx — browser hitting ALB DNS gets WordPress setup wizard
 
 
-et -euo pipefail
+set -euo pipefail
 
 # Terraform variables
 REGION="${region}"
